@@ -1,0 +1,23 @@
+---
+
+    - name: ensure systemd daemon reload
+      systemd:
+        daemon_reload: yes
+
+    - name: ensure kube-proxy is running on slave
+      systemd: 
+        name: kube-proxy
+        state: restarted
+        enabled: yes
+
+    - name: ensure kubelet is running on slave
+      systemd: 
+        name: kubelet
+        state: restarted
+        enabled: yes
+
+    - name: ensure docker service is running on slave
+      systemd:
+        name: docker
+        state: restarted
+        enabled: yes

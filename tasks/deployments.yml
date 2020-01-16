@@ -1,0 +1,7 @@
+---
+
+    - name: SSH deployment desriptor to location
+      template:
+        src: jenkins-deployment.yaml
+        dest: /etc/kubernetes/Builds/
+        mode: 0755

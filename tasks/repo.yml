@@ -1,0 +1,33 @@
+---
+
+    - name: Add centos repo 1
+      yum_repository:
+        name: Centos-Old
+        description: Centos 7 legacy
+        file: Centos-OLD
+        baseurl: http://ftp.riken.jp/Linux/cern/centos/7/extras/x86_64/
+        enabled: yes
+        gpgcheck: no
+
+    - name: Add Fedora repo
+      yum_repository:
+        name: fedora  
+        description: Fedora latest repo
+        file: fedora
+        baseurl: http://dl.fedoraproject.org/pub/epel/7/x86_64/
+        enabled: yes
+        gpgcheck: no
+
+    - name: Add kubernetes repo
+      yum_repository:
+        name: kubernetes  
+        description: Latest repo from kubernetes.io
+        file: kubernetes
+        baseurl: http://yum.kubernetes.io/repos/kubernetes-el7-x86_64
+        enabled: yes
+        gpgcheck: no
+        repo_gpgcheck: no
+        gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg
+         
+
+    

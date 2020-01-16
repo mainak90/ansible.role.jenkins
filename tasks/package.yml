@@ -1,0 +1,24 @@
+---
+
+    - name: Install the required packages for kubernetes cluster
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - etcd 
+        - ntp
+        - kubernetes-1.5.2-0.7.git269f928.el7.x86_64
+        - kubernetes-master-1.5.2-0.7.git269f928.el7.x86_64
+        - kubernetes-node-1.5.2-0.7.git269f928.el7.x86_64
+
+    - name: Uninstall default docker version 1.13
+      shell: rpm -e --nodeps docker-1.13.1-58.git87f2fab.el7.centos.x86_64
+      ignore_errors: yes ##Might that the package is not installed
+
+
+    - name: Install docker 1.12
+      yum:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - 2:docker-1.12.6-61.git85d7426.el7.centos.x86_64

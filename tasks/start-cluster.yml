@@ -1,0 +1,26 @@
+---
+     - name: Check if application deployment descriptor exists
+       stat:
+         path: "{{ kube_home }}/Builds/jenkins-deployment.yaml"
+       register: deployfile
+
+     - fail:
+        msg: "Deployment descriptor not found"
+       when: deployfile.stat.exists == False
+
+     - name: Check if application service file exists
+       stat:
+         path: "{{ kube_home }}/Builds/jenkins-service.yaml"
+       register: servicefile
+
+     - fail:
+         msg: "Deployment descriptor not found"
+       when: servicefile.stat.exists == False
+
+     - name: Create Deployment
+       shell: kubectl apply -f "{{ kube_home }}/Builds/jenkins-deployment.yaml"
+       register: kubedeploy
+
+     - name: Create Service
+       shell: kubectl create -s "{{ kube_home }}/Builds/jenkins-service.yaml"
+       when: kubedeploy.rc == 0

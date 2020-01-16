@@ -1,0 +1,7 @@
+---
+    
+    - name: SSH service configuration to location
+      template:
+        src: jenkins-service.yaml
+        dest: /etc/kubernetes/Builds/
+        mode: 0755

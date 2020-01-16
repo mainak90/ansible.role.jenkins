@@ -1,0 +1,13 @@
+---
+
+    - name: Main config
+      template:
+        src: config
+        dest: /etc/kubernetes/
+        mode: 0755
+
+    - name: kubelet config
+      template:
+        src: kubelet
+        dest: /etc/kubernetes/
+        mode: 0755

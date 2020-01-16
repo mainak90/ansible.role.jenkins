@@ -1,0 +1,37 @@
+---
+
+    - name: Enable Repos
+      include_tasks: repo.yml
+      tags: repo
+
+    - name: Install packages
+      include_tasks: package.yml
+      tags: package
+
+    - name: Configure master
+      include_tasks: master-config.yml
+      tags: master
+
+    - name: Confugure slave
+      include_tasks: slave-config.yml
+      tags: slave
+
+    - name: Check master services
+      include_tasks: master-check.yml
+      tags: service-master
+
+    - name: Check slave services
+      include_tasks: slave-check.yml
+      tags: service-slave      
+
+    - name: Push deployment files
+      include_tasks: deployments.yml
+      tags: deployments
+
+    - name: Push Service files
+      include_tasks: services.yml
+      tags: services
+
+    - name: Create kubernetes cluster
+      include_tasks: start-cluster.yml
+      tags: cluster

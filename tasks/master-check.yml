@@ -1,0 +1,28 @@
+---
+    - name: Ensure systemd daemon reload
+      systemd:
+        daemon_reload: yes
+
+    - name: ensure that etcd service is running on master
+      systemd:
+        name: etcd
+        state: restarted
+        enabled: yes
+
+    - name: ensure that kube-apiserver is running on master
+      systemd:
+        name: kube-apiserver
+        state: restarted
+        enabled: yes
+
+    - name: ensure that kube-controller-manager is running on master
+      systemd:
+        name: kube-controller-manager
+        state: restarted
+        enabled: yes
+   
+    - name: ensure that kube-scheduler is running on master
+      systemd: 
+        name: kube-scheduler
+        state: restarted
+        enabled: yes

@@ -1,0 +1,23 @@
+---
+
+    - name: Main config
+      template:
+        src: config
+        dest: /etc/kubernetes/
+        mode: 0755
+
+    - name: apiserver config
+      template:
+        src: apiserver
+        dest: /etc/kubernetes/
+        mode: 0755
+
+    - name: etcd config
+      template:
+        src: etcd.conf
+        dest: /etc/kubernetes/
+        mode: 0755
+
+
+
+    

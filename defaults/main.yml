@@ -1,0 +1,4 @@
+---
+    kube_master: "eln001344.corp.telenet.be"
+    kube_home: "/etc/kubernetes"
+
